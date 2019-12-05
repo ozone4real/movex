@@ -1,4 +1,4 @@
-# vue-starter
+# movex
 
 ## Project setup
 ```
