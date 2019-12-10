@@ -1,24 +1,24 @@
 <template>
   <div v-if="movie" class="movie">
     <div>{{ movie.title }}</div>
-    <div>{{ movie.genreId | getGenreName }}</div>
+    <div>{{ genres.find(genre => genre.id ===  movie.genreId ).name }}</div>
     <div>{{ movie.releaseDate }}</div>
     <div><v-icon @click="editMovie"> mdi-pencil</v-icon></div>
   </div>
 </template>
 
 <script>
-import genres from '../movies-api/genres';
-function getGenre(genreId) {
-    return genres.find(genre => genre.id === genreId ) 
-  }
+// import genres from '../movies-api/genres';
+// function getGenre(genreId) {
+//     return genres.find(genre => genre.id === genreId ) 
+//   }
   export default {
     name: 'MoviesListItem',
-    filters: {
-      getGenreName(value) {
-        return getGenre(value).name
-      }
-    },
+    // filters: {
+    //   getGenreName(value) {
+    //     return getGenre(value).name
+    //   }
+    // },
     methods: {
       editMovie() {
         this.$emit('editMovie', this.movie)
@@ -28,6 +28,9 @@ function getGenre(genreId) {
       movie: {
         type: Object
       },
+      genres: {
+        type: Array
+      }
     },
   }
 </script>

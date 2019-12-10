@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import MoviesListVue from './MoviesList.vue';
+import MoviesListVue from '../components/MoviesList.vue';
   export default {
     name: 'Movies',
     components: { MoviesListVue }

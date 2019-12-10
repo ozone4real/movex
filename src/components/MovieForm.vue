@@ -1,49 +1,90 @@
 <template>
   <div>
     <form class="movie-form">
-      <h3 > Edit Movie</h3>
+      <h3 > {{ heading }} </h3>
     <div class="input-field">
-      <input type="text" placeholder="Title" v-model="clonedMovie.title" required />
+      <input type="text" placeholder="Title" v-model="movieData.title" required />
       <small></small>
       </div>
       <div class="input-field">
-      <input type="text"  placeholder="Release Date" v-model="clonedMovie.releaseDate" required/>
+      <input type="text"  placeholder="Release Date" v-model="movieData.releaseDate" required/>
+      </div>
+      <div class="input-field">
+      <textarea type="text"  placeholder="Summary" v-model="movieData.summary" required>  </textarea>
+      </div>
+      <div class="input-field">
+      <input type="text"  placeholder="Picture" v-model="movieData.picture" required/>
       </div>
       <div class="select-field">
-      <select v-model="clonedMovie.genreId" >
+      <select v-model="movieData.genreId" >
         <option v-for="genre in genres" :value="genre.id" :key="genre.id">
           {{  genre.name}}
         </option>
       </select>
       </div>
       <div>
-       <v-btn small color="secondary" dark @click="save">Save</v-btn> <v-btn small @click="cancelEdit">Cancel</v-btn>
+       <v-btn large color="secondary" dark @click="save">Save</v-btn> <v-btn v-if="!isCreation" large @click="cancelEdit">Cancel</v-btn>
       </div>
     </form>
   </div>
 </template>
 
 <script>
-  import genres from '../movies-api/genres';
+import { mapActions, mapState } from 'vuex'
   export default {
     name: 'MovieForm',
     props: {
       movie: {
-        type: Object
+        type: Object,
+        default: () => {}
       },
+      isCreation: {
+        type: Boolean
+      },
+      heading: {
+        type: String
+      }
     },
     data() {
       return {
-        genres,
-        clonedMovie: {...this.movie}
+        movieData: {}
       }
     },
+    watch: {
+      movie(current) {
+        this.movieData = current
+      }
+    },
+    created() {
+      if(this.isCreation) {
+        this.movieData = {
+          title: '',
+          releaseDate: '',
+          summary: '',
+          picture: ''
+        }
+      }
+      this.getGenresAction()
+    },
+    
+    computed: {
+      ...mapState(['genres', 'movie'])
+    },
+
     methods: {
+      ...mapActions(['updateMovieAction', 'getGenresAction', 'addMovieAction']),
       cancelEdit() {
-        this.$emit('cancelEdit')
+        this.$router.back()
       },
-      save() {
-        this.$emit('save', this.clonedMovie)
+      async save() {
+        if(this.isCreation) {
+          await this.addMovieAction(this.movieData)
+          this.$router.push(`/movies/${this.movie.id}`)
+        } else {
+          await this.updateMovieAction(this.movieData)
+          // this.$emit('save', this.clonedMovie)
+          this.$router.push(`/movies/${this.movie.id}`)
+        }
       }
     },
   }
@@ -69,7 +110,7 @@ form {
         display: block;
       }
     }
-    input, select {
+    input, select, textarea {
       padding: 12px;
       font-size: inherit;
       border-radius: 7px;
@@ -78,7 +119,12 @@ form {
       width: 85%
     }
 
+    textarea {
+      height: 100px
+    }
+
     button {
+      width: 30%;
       margin: 10px;
     }
   }

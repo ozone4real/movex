@@ -4,10 +4,14 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "backend": "json-server --watch movies_api/db.json --port 8888",
     "build": "vue-cli-service build",
+    "start": "concurrently \"npm run backend\" \"npm run serve\"",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "cloudinary-jquery-file-upload": "^2.8.0",
+    "concurrently": "^5.0.0",
     "core-js": "^3.4.3",
     "vue": "^2.6.10",
     "vue-router": "^3.1.3",

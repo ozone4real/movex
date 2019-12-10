@@ -5,17 +5,17 @@
     <h3>{{ message }}</h3>
     <div>
       <div class="movie-item" v-for="movie in movies" :key="movie.id" >
-        <MoviesListItemVue :movie="movie" @editMovie="editMovie" />     
+        <MoviesListItemVue :movie="movie" @editMovie="editMovie" :genres="genres" />     
       </div>
     </div>
   </div>
-   <MoviesFormVue :movie="selectedMovie" v-if="selectedMovie" @cancelEdit="cancelEdit" @save="save" /> 
+   <MoviesFormVue :movie="selectedMovie" v-if="selectedMovie" @cancelEdit="cancelEdit" @save="save" :genres="genres" /> 
    </div>
 
 </template>
 
 <script>
-import movies from '../movies-api/movies';
+import axios from 'axios';
 import MoviesListHeaderVue from './MoviesListHeader.vue';
 import MoviesListItemVue from './MoviesListItem.vue';
 import MoviesFormVue from './MovieForm.vue';
@@ -28,13 +28,11 @@ import MoviesFormVue from './MovieForm.vue';
     data() {
       return {
         movies: [],
+        genres: [],
         selectedMovie: undefined
       }
     },
     methods: {
-      async fetchMovies() {
-        return new Promise(resolve => setTimeout(() => (resolve(movies)), 1500))
-      },
       editMovie(value) {
         this.selectedMovie = value
         console.log(this.selectedMovie)
@@ -51,7 +49,13 @@ import MoviesFormVue from './MovieForm.vue';
       },
       async loadMovies() {
         this.message = "Fetching movies........"
-        this.movies = await this.fetchMovies()
+        const [moviesData, genresData] = await Promise.all([
+          axios.get('movies-api/movies.json'),
+          axios.get('movies-api/genres.json')
+        ])
+        
+        this.movies = moviesData.data;
+        this.genres = genresData.data;
         this.message = ""
       }
     },
@@ -63,7 +67,7 @@ import MoviesFormVue from './MovieForm.vue';
 
 <style lang="scss" scoped>
   .movies-container {
-    width: 60%;
+    width: 95%;
     margin: auto;
     padding: 20px;
   }

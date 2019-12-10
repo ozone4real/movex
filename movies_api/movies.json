@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "title": "Angel has fallen",
+    "genreId": 1,
+    "releaseDate": "21-07-2019",
+    "picture": "https://www.hindustantimes.com/rf/image_size_960x540/HT/p2/2019/08/23/Pictures/_7b9f7cdc-c58a-11e9-b964-dfb37bdfef35.jpg",
+    "summary": "Mike Banning is framed for the attempted assassination of the President and must evade his own agency and the FBI as he tries to uncover the real threat."
+  },
+  {
+    "id": 2,
+    "title": "Parasite",
+    "genreId": 2,
+    "releaseDate": "15-03-2019",
+    "picture": "https://i.ytimg.com/vi/isOGD_7hNIY/maxresdefault.jpg",
+    "summary": "All unemployed, Ki-taek and his family take peculiar interest in the wealthy and glamorous Parks, as they ingratiate themselves into their lives and get entangled in an unexpected incident."
+  },
+  {
+    "id": 3,
+    "title": "John Wick",
+    "genreId": 1,
+    "releaseDate": "03-03-2019",
+    "picture": "https://www.indiewire.com/wp-content/uploads/2019/05/07956f40-77c4-11e9-9073-657a85982e73.jpg",
+    "summary": "John Wick is on the run after killing a member of the international assassin's guild, and with a $14 million price tag on his head, he is the target of hit men and women everywhere."
+  },
+  {
+    "id": 4,
+    "title": "Last Black Man In San Francisco",
+    "genreId": 3,
+    "releaseDate": "28-05-2019",
+    "picture": "https://ww2.kqed.org/wp-content/uploads/sites/2/2019/05/LastBlackManinSF.jpg",
+    "summary": "A young man searches for home in the changing city that seems to have left him behind."
+  },
+  {
+    "id": 5,
+    "title": "Avengers: End Game",
+    "genreId": 3,
+    "releaseDate": "28-05-2019",
+    "picture": "https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fscottmendelson%2Ffiles%2F2019%2F04%2Fscreencapture-file-C-Users-JckNa-OneDrive-Desktop-b-avengersendgame-horizontal-friday-17793-04d92fbf-webp-2019-04-23-08_14_14.jpg",
+    "summary": "After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe."
+  },
+  {
+    "id": 6,
+    "title": "Mary Poppins Returns",
+    "genreId": 3,
+    "releaseDate": "28-11-2018",
+    "picture": "https://halleonard-closerlook.s3.amazonaws.com/00285401/00285401_Coverz.jpg",
+    "summary": "Decades after her original visit, the magical nanny returns to help the Banks siblings and Michael's children through a difficult time in their lives."
+    },
+    {
+      "id": 7,
+      "title": "Dumbo",
+      "genreId": 5,
+      "releaseDate": "03-05-2019",
+      "picture": "https://media.swncdn.com/cms/CW/Movies/66171-dumbo-1.1200w.tn.jpg",
+      "summary": "A young elephant, whose oversized ears enable him to fly, helps save a struggling circus, but when the circus plans a new venture, Dumbo and his friends discover dark secrets beneath its shiny veneer."
+    },
+    {
+      "id": 8,
+      "title": "Spider-Man: Far from Home",
+      "genreId": 2,
+      "releaseDate": "03-05-2019",
+      "picture": "https://static0.srcdn.com/wordpress/wp-content/uploads/2019/08/Spider-Man-Far-From-Home-Extended-Cut-Scenes-SR.jpg?q=50&fit=crop&w=960&h=500&dpr=1.5",
+      "summary": "Following the events of Avengers: Endgame (2019), Spider-Man must step up to take on new threats in a world that has changed forever."
+    }
+]

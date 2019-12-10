@@ -1,16 +1,19 @@
 <template>
   <div id="app">
-    <Movies />
+    <Header />
+    <main>
+    <router-view></router-view>
+    </main>
   </div>
 </template>
 
 <script>
-import Movies from './components/Movies.vue'
+import Header from './components/Header.vue'
 
 export default {
   name: 'app',
   components: {
-    Movies
+    Header
   }
 }
 </script>
@@ -24,9 +27,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin-top: 60px;
-  font-size: 15px;
+  font-size: 16px;
   box-sizing: border-box;
-  
 }
+main {
+    width: 60%;
+    padding: 40px 0;
+    margin: auto;
+  }
 </style>
